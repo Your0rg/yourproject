@@ -35,14 +35,12 @@ dependencies:
     - pushd ~/packages/yourself;
         git clone https://github.com/your0rg/yourpackage;
       popd;
-    - rm -fr ./packages/yourpackage
-    - ln -s ~/packages/yourself/yourpackage ./packages/yourpackage
+    - pushd ./packages;
+        rm -fr yourpackage;
+        ln -s ~/packages/yourself/yourpackage yourpackage;
+      popd;
 
 test:
   # Tests that replace CircleCI's inferred tests
   override:
-    - pwd
-    - whoami
-    - ls -l
-    - ls -l ~/packages/yourself
     - tests/tinyTests/test-all.sh
