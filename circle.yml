@@ -28,7 +28,7 @@ dependencies:
     # Have symlink to a cached directory
     - ln -s ~/node_modules node_modules
     # Install  packages
-    # - mkdir -p ~/packages/yourself;  # ensure dir exists
+    - mkdir -p ~/packages/yourself;  # ensure dir exists
     # - pushd ~/packages/yourself;     
     #     git clone https://github.com/your0rg/yourpackage;  # get the package to test
     #   popd;
