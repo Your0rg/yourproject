@@ -14,6 +14,7 @@ dependencies:
   #    restored verbatim on every future build.
   cache_directories:
     - ~/.meteor
+    - ~/packages
     - ~/node_modules
   # Dependencies of the build run before CircleCI's inferred commands
   pre:
@@ -27,6 +28,10 @@ dependencies:
     - if [ ! -d ~/node_modules/selenium-webdriver/ ]; then npm install --prefix ~ selenium-webdriver; else echo "Selenium Webdriver seems to be cached"; fi;
     # Have symlink to a cached directory
     - ln -s ~/node_modules node_modules
+    # Install  packages
+    - mkdir -p ~/packages/yourself
+    # If yourpackage is already cached, do not need to get it again.
+    - if [ ! -f ~/packages/yourself/yourpackage/yourpackage-tests.js ]; then pushd ~/packages/yourself; git clone https://github.com/your0rg/yourpackage/blob/master/yourpackage-tests.js; popd; fi;
 
 test:
   # Tests that replace CircleCI's inferred tests
@@ -34,5 +39,5 @@ test:
     - pwd
     - whoami
     - ls -l
-    - ls -l tests/tinyTests
+    - tree ~/packages/yourself
     - tests/tinyTests/test-all.sh
