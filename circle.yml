@@ -28,14 +28,15 @@ dependencies:
     # Have symlink to a cached directory
     - ln -s ~/node_modules node_modules
     # Install  packages
-    # - mkdir -p ~/packages/yourself
-    # - pushd ~/packages/yourself;
-    #     git clone https://github.com/your0rg/yourpackage;
-    #   popd;
-    # - pushd ./packages;
-    #     rm -fr yourpackage;
-    #     ln -s ~/packages/yourself/yourpackage yourpackage;
-    #   popd;
+    - mkdir -p ~/packages/yourself;  # ensure dir exists
+    - pushd ~/packages/yourself;     
+        git clone https://github.com/your0rg/yourpackage;  # get the package to test
+      popd;
+    # Link to packages
+    - pushd ./packages;
+        rm -fr yourpackage;  # get rid of loose symbolic link
+        ln -s ~/packages/yourself/yourpackage yourpackage; # add correct symbolic link
+      popd;
 
 test:
   # Tests that replace CircleCI's inferred tests
