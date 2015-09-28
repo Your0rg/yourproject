@@ -31,4 +31,8 @@ dependencies:
 test:
   # Tests that replace CircleCI's inferred tests
   override:
+    - pwd
+    - whoami
+    - ls -l
+    - ls -l tests/tinyTests
     - tests/tinyTests/test-all.sh
