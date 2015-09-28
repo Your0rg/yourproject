@@ -18,9 +18,9 @@ dependencies:
   # Dependencies of the build run before CircleCI's inferred commands
   pre:
     # Install  Meteor
-    - mkdir -p ~/.meteor
+    - mkdir -p ~/.meteor;
     # If Meteor is already cached, do not need to build it again.
-    - if [ ! -e ~/.meteor/meteor ]; then curl https://install.meteor.com | /bin/sh; fi
+    - if [ ! -e ~/.meteor/meteor ]; then curl https://install.meteor.com | /bin/sh; fi;
     # Now install WebDriver
     - mkdir -p ~/node_modules
     # If WebDriver is already cached, do not need to build it again.
@@ -28,15 +28,15 @@ dependencies:
     # Have symlink to a cached directory
     - ln -s ~/node_modules node_modules
     # Install  packages
-    - mkdir -p ~/packages/yourself;  # ensure dir exists
-    - pushd ~/packages/yourself;     
-        git clone https://github.com/your0rg/yourpackage;  # get the package to test
-      popd;
-    # Link to packages
-    - pushd ./packages;
-        rm -fr yourpackage;  # get rid of loose symbolic link
-        ln -s ~/packages/yourself/yourpackage yourpackage; # add correct symbolic link
-      popd;
+    # - mkdir -p ~/packages/yourself;  # ensure dir exists
+    # - pushd ~/packages/yourself;     
+    #     git clone https://github.com/your0rg/yourpackage;  # get the package to test
+    #   popd;
+    # # Link to packages
+    # - pushd ./packages;
+    #     rm -fr yourpackage;  # get rid of loose symbolic link
+    #     ln -s ~/packages/yourself/yourpackage yourpackage; # add correct symbolic link
+    #   popd;
 
 test:
   # Tests that replace CircleCI's inferred tests
