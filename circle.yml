@@ -14,12 +14,9 @@ dependencies:
   #    restored verbatim on every future build.
   cache_directories:
     - ~/.meteor
-    - ~/packages
     - ~/node_modules
   # Dependencies of the build run before CircleCI's inferred commands
   pre:
-    # system dependencies
-    - mkdir -p ~/.meteor
     # Install  Meteor
     - mkdir -p ~/.meteor
     # If Meteor is already cached, do not need to build it again.
@@ -31,14 +28,14 @@ dependencies:
     # Have symlink to a cached directory
     - ln -s ~/node_modules node_modules
     # Install  packages
-    - mkdir -p ~/packages/yourself
-    - pushd ~/packages/yourself;
-        git clone https://github.com/your0rg/yourpackage;
-      popd;
-    - pushd ./packages;
-        rm -fr yourpackage;
-        ln -s ~/packages/yourself/yourpackage yourpackage;
-      popd;
+    # - mkdir -p ~/packages/yourself
+    # - pushd ~/packages/yourself;
+    #     git clone https://github.com/your0rg/yourpackage;
+    #   popd;
+    # - pushd ./packages;
+    #     rm -fr yourpackage;
+    #     ln -s ~/packages/yourself/yourpackage yourpackage;
+    #   popd;
 
 test:
   # Tests that replace CircleCI's inferred tests
