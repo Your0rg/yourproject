@@ -10,14 +10,6 @@ fi
 # Packages with tests. To ignore a package, place // NOTEST after the onTest definition.
 PACKAGES=$( $GREP -PRl 'Package\.(onTest|on_test)(?!.*// NOTEST)' packages | $GREP -Po 'packages/\K.*(?=/)' | sort -u );
 
-# echo "${PACKAGES}";
-# echo $(wc -l <<< "${PACKAGES}");
-
-# if [[ $(wc -l <<< "${PACKAGES}") -lt 1 ]]; then 
-#   echo "Found no packages to test.";
-#   exit 1;
-# fi;
-
 SCRIPT_DIR="$( dirname "${BASH_SOURCE[0]}" )"
 
 # Perform tests.
@@ -43,7 +35,6 @@ fi
 if [ "${CNT}" == "0" ]; then
   TESTS_FAILED=1;
   echo "ERROR: Found no packages to test."
-  echo "ERROR: For details see output above."
 fi
 
 exit ${TESTS_FAILED}
