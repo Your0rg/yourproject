@@ -32,11 +32,11 @@ dependencies:
     - pushd ~/packages/yourself;     
         git clone https://github.com/your0rg/yourpackage;
       popd;
-    # # Link to packages
-    # - pushd ./packages;
-    #     rm -fr yourpackage;  # get rid of loose symbolic link
-    #     ln -s ~/packages/yourself/yourpackage yourpackage; # add correct symbolic link
-    #   popd;
+    # Link to packages
+    - pushd ./packages;
+        rm -fr yourpackage;
+        ln -s ~/packages/yourself/yourpackage yourpackage;
+      popd;
 
 test:
   # Tests that replace CircleCI's inferred tests
