@@ -38,6 +38,7 @@ dependencies:
         git clone https://github.com/your0rg/yourpackage;
         popd;
       fi;
+    - rm -fr ./packages/yourpackage
     - ln -s ~/packages/yourself/yourpackage ./packages/yourpackage
 
 test:
