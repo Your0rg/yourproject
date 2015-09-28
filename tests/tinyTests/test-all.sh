@@ -10,6 +10,9 @@ fi
 # Packages with tests. To ignore a package, place // NOTEST after the onTest definition.
 PACKAGES=$( $GREP -PRl 'Package\.(onTest|on_test)(?!.*// NOTEST)' packages | $GREP -Po 'packages/\K.*(?=/)' | sort -u );
 
+echo "${PACKAGES}";
+echo $(wc -l <<< "${PACKAGES}");
+
 if [[ $(wc -l <<< "${PACKAGES}") -lt 1 ]]; then 
   echo "Found no packages to test.";
   exit 1;
